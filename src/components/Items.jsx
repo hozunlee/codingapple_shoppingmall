@@ -14,7 +14,7 @@ const Items = ({ data }) => {
                         <Col key={item.id}>
                             <div
                                 onClick={() => {
-                                    navigate("/detail");
+                                    navigate(`/detail/${item.id}`);
                                 }}
                             >
                                 <img src={item.url} alt="img1" width="80%" />
