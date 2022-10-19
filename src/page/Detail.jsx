@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { TabContent } from "../components/TabContent";
 
 const Detail = ({ data }) => {
     const [showing, setShowing] = useState(true);
+    const [탭, 탭변경] = useState(0);
     const [input, setInput] = useState("");
     useEffect(() => {
         setTimeout(() => {
@@ -64,6 +67,22 @@ const Detail = ({ data }) => {
                             <button className="btn btn-danger">주문하기</button>
                         </div>
                     </div>
+
+                    <Nav fill variant="tabs" defaultActiveKey="link0">
+                        <Nav.Item onClick={() => 탭변경(0)}>
+                            <Nav.Link eventKey="link-0">Active</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item onClick={() => 탭변경(1)}>
+                            <Nav.Link eventKey="link-1">
+                                Loooonger NavLink
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item onClick={() => 탭변경(2)}>
+                            <Nav.Link eventKey="link-2">Link</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+
+                    <TabContent 탭={탭} data={data} />
                 </div>
             )}
         </>

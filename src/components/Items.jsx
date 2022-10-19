@@ -9,7 +9,7 @@ const Items = ({ data }) => {
     return (
         <Container>
             <Row>
-                {data.map((item, idx) => {
+                {data?.map((item, idx) => {
                     return (
                         <Col key={item.id}>
                             <div
