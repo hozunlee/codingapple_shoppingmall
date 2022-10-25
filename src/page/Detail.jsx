@@ -22,7 +22,6 @@ const Detail = ({ data }) => {
     const newArr = { ...result[0] }; // 이친구로 벗겨서 사용했었음
 
     const result1 = data.find((item) => item.id == id); // find는 결조건식에 맞는 자료만 남겨줌 그래서 바로사용가능함
-    // console.log("🚀 ~ file: detail.jsx ~ line 13 ~ Detail ~ result1", result1);
 
     const discountHTML = (
         <div className="alert alert-warning">2초이내 구매시 할인</div>
@@ -46,6 +45,12 @@ const Detail = ({ data }) => {
         }
     }, [input]);
 
+    const addCart = {
+        id: result1.id,
+        name: result1.title,
+        count: 1,
+    };
+
     return (
         <>
             {id && typeof newid !== "number" ? (
@@ -67,12 +72,12 @@ const Detail = ({ data }) => {
                                 value={input}
                                 onChange={onChangeInput}
                             />
-                            <h4 className="pt-5">{newArr.title}</h4>
-                            <p>{newArr.content}</p>
-                            <p>{newArr.price}</p>
+                            <h4 className="pt-5">{result1.title}</h4>
+                            <p>{result1.content}</p>
+                            <p>{result1.price}</p>
                             <button
                                 className="btn btn-danger"
-                                onClick={() => dispatch(addCartItem(2))}
+                                onClick={() => dispatch(addCartItem(addCart))}
                             >
                                 주문하기
                             </button>

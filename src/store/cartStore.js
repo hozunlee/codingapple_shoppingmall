@@ -14,7 +14,7 @@ let cart = createSlice({
         // payload는 짐을 뜻함
 
         increaseStock(state, action) {
-            state.filter((item) => {
+            state.map((item) => {
                 if (item.id === action.payload) {
                     return (item.count += 1);
                 }
@@ -24,6 +24,15 @@ let cart = createSlice({
 
         addCartItem(state, action) {
             console.log("action.payload :>> ", action.payload);
+            console.log("action.payload :>> ", action.payload.id);
+
+            for (let k of state) {
+                if (k.id === action.payload.id) {
+                    return (k.count += 1);
+                }
+            }
+            state.push(action.payload);
+            return state;
         },
     },
 });
