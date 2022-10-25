@@ -14,25 +14,33 @@ let cart = createSlice({
         // payload는 짐을 뜻함
 
         increaseStock(state, action) {
-            state.map((item) => {
-                if (item.id === action.payload) {
-                    return (item.count += 1);
-                }
-                return item;
-            });
+            // state.map((item) => {
+            //     if (item.id === action.payload) {
+            //         return (item.count += 1);
+            //     }
+            //     return item;
+            // });
+
+            //apple style
+            let 번호 = state.findIndex((a) => a.id === action.payload);
+            state[번호].count++;
         },
 
         addCartItem(state, action) {
             console.log("action.payload :>> ", action.payload);
             console.log("action.payload :>> ", action.payload.id);
 
-            for (let k of state) {
-                if (k.id === action.payload.id) {
-                    return (k.count += 1);
-                }
+            let 번호 = state.findIndex((a) => a.id === action.payload.id);
+            console.log(
+                "🚀 ~ file: cartStore.js ~ line 34 ~ addCartItem ~ 번호",
+                번호
+            );
+
+            if (번호 !== -1) {
+                state[번호].count++;
+            } else {
+                state.push(action.payload);
             }
-            state.push(action.payload);
-            return state;
         },
     },
 });
