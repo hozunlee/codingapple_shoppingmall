@@ -10,6 +10,7 @@ import Detail from "./page/Detail";
 
 import context1 from "./store/context";
 import { useState } from "react";
+import Cart from "./page/Cart";
 
 function App() {
     const [재고, 재고변경] = useState([10, 20, 30]);
@@ -25,6 +26,7 @@ function App() {
                         path="/detail/:id"
                         element={<Detail data={shoesData1} />}
                     />
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
             </context1.Provider>
         </div>

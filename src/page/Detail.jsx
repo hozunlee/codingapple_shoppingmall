@@ -1,26 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { TabContent } from "../components/TabContent";
+
+import { addCartItem } from "../store/cartStore";
 
 const Detail = ({ data }) => {
     const [showing, setShowing] = useState(true);
     const [탭, 탭변경] = useState(0);
     const [input, setInput] = useState("");
-    useEffect(() => {
-        setTimeout(() => {
-            setShowing(false);
-        }, 2000);
-    }, []);
-
-    useEffect(() => {
-        if (isNaN(input)) {
-            setInput("");
-            alert("숫자만넣어라?");
-        }
-    }, [input]);
 
     let { id } = useParams(); // 유저가 URL파라미터에 입력한 거 가져오기
+    const dispatch = useDispatch();
 
     const newid = +id;
     // console.log("id :>> ", typeof newid);
@@ -39,6 +31,20 @@ const Detail = ({ data }) => {
     const onChangeInput = (e) => {
         setInput(e.target.value);
     };
+
+    //useEffect zone
+    useEffect(() => {
+        setTimeout(() => {
+            setShowing(false);
+        }, 2000);
+    }, []);
+
+    useEffect(() => {
+        if (isNaN(input)) {
+            setInput("");
+            alert("숫자만넣어라?");
+        }
+    }, [input]);
 
     return (
         <>
@@ -64,7 +70,12 @@ const Detail = ({ data }) => {
                             <h4 className="pt-5">{newArr.title}</h4>
                             <p>{newArr.content}</p>
                             <p>{newArr.price}</p>
-                            <button className="btn btn-danger">주문하기</button>
+                            <button
+                                className="btn btn-danger"
+                                onClick={() => dispatch(addCartItem(2))}
+                            >
+                                주문하기
+                            </button>
                         </div>
                     </div>
 

@@ -23,7 +23,9 @@ const NavBar = () => {
                             Home
                         </Nav.Link>
                         <Nav.Link href="#features">Store</Nav.Link>
-                        <Nav.Link href="#pricing">Cart</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/cart")}>
+                            Cart
+                        </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

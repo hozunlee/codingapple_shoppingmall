@@ -7,6 +7,8 @@ import Items from "../components/Items";
 import shoesData from "../data/shoes";
 import useStore from "../store/store";
 
+let cnt = 0;
+
 const Main = () => {
     const [loading, setLoading] = useState(true);
     const { shoesData1, setShoesData1 } = useStore(); // 광역 상태관리
@@ -22,6 +24,7 @@ const Main = () => {
 
     const updateItem = async () => {
         setCount((prev) => prev + 1);
+        // cnt += 1;
         try {
             if (count === 0) {
                 setLoading(true);
