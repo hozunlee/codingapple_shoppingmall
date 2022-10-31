@@ -42,12 +42,15 @@ const Main = () => {
         }
     };
 
+    const a = JSON.parse(localStorage.getItem("watched"));
+
     return (
         <>
             {loading ? (
                 <div>로딩 중</div>
             ) : (
                 <>
+                    <div>최근본상품 {a}</div>
                     <div className="main-bg"></div>
                     <Items data={shoesData1} />
                     <button onClick={updateItem}>요청</button>

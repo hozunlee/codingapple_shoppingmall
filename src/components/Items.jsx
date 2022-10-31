@@ -7,15 +7,15 @@ import { useNavigate } from "react-router-dom";
 const Items = ({ data }) => {
     const navigate = useNavigate();
 
-    let recentViewItem = new Set();
+    // let recentViewItem = new Set();
 
     const onClickDetail = (item) => {
-        const sess = JSON.parse(localStorage.getItem("watched"));
-        if (sess.length >= 1) sess.map((item) => recentViewItem.add(item));
+        // const sess = JSON.parse(localStorage.getItem("watched"));
+        // if (sess.length >= 1) sess.map((item) => recentViewItem.add(item));
 
-        recentViewItem.add(item.id);
+        // recentViewItem.add(item.id);
 
-        localStorage.setItem("watched", JSON.stringify([...recentViewItem]));
+        // localStorage.setItem("watched", JSON.stringify([...recentViewItem]));
         navigate(`/detail/${item.id}`);
     };
 

@@ -50,6 +50,14 @@ const Detail = ({ data }) => {
         count: 1,
     };
 
+    useEffect(() => {
+        let temp = JSON.parse(localStorage.getItem("watched"));
+
+        temp.unshift(result1.id);
+        temp = new Set(temp);
+        localStorage.setItem("watched", JSON.stringify([...temp]));
+    }, []);
+
     return (
         <>
             {id && typeof newid !== "number" ? (

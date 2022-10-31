@@ -18,7 +18,8 @@ function App() {
     const { shoesData1 } = useStore(); // 광역 상태관리
 
     useEffect(() => {
-        localStorage.setItem("watched", JSON.stringify([]));
+        if (!localStorage.getItem("watched"))
+            localStorage.setItem("watched", JSON.stringify([]));
     }, []);
     return (
         <div className="App">
