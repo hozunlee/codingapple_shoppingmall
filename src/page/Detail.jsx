@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TabContent } from "../components/TabContent";
 
 import { addCartItem } from "../store/cartStore";
@@ -13,10 +13,9 @@ const Detail = ({ data }) => {
 
     let { id } = useParams(); // 유저가 URL파라미터에 입력한 거 가져오기
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const newid = +id;
-    // console.log("id :>> ", typeof newid);
-    // console.log("data :>> ", data[id].title);
 
     const result = data.filter((item) => item.id == id); // filter는 대괄호까지 return해서 벗겨줘야함.
     const newArr = { ...result[0] }; // 이친구로 벗겨서 사용했었음
@@ -77,7 +76,10 @@ const Detail = ({ data }) => {
                             <p>{result1.price}</p>
                             <button
                                 className="btn btn-danger"
-                                onClick={() => dispatch(addCartItem(addCart))}
+                                onClick={() => {
+                                    dispatch(addCartItem(addCart));
+                                    navigate("/cart");
+                                }}
                             >
                                 주문하기
                             </button>

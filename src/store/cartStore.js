@@ -31,10 +31,6 @@ let cart = createSlice({
             console.log("action.payload :>> ", action.payload.id);
 
             let 번호 = state.findIndex((a) => a.id === action.payload.id);
-            console.log(
-                "🚀 ~ file: cartStore.js ~ line 34 ~ addCartItem ~ 번호",
-                번호
-            );
 
             if (번호 !== -1) {
                 state[번호].count++;

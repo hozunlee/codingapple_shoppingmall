@@ -11,10 +11,15 @@ import Detail from "./page/Detail";
 import context1 from "./store/context";
 import { useState } from "react";
 import Cart from "./page/Cart";
+import { useEffect } from "react";
 
 function App() {
     const [재고, 재고변경] = useState([10, 20, 30]);
     const { shoesData1 } = useStore(); // 광역 상태관리
+
+    useEffect(() => {
+        localStorage.setItem("watched", JSON.stringify([]));
+    }, []);
     return (
         <div className="App">
             <NavBar />

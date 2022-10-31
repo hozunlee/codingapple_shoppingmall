@@ -10,6 +10,11 @@ let user = createSlice({
             state.name = "park";
         },
         increaseAge(state) {
+            const a = { ...state };
+            console.log(
+                "🚀 ~ file: userStore.js ~ line 15 ~ increaseAge ~ a",
+                a
+            );
             console.log("state :>> ", state);
             state.age += 1;
         },
